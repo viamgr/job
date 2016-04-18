@@ -3,6 +3,7 @@
 class PTCWebDepartmentEmployment
 {
     const LIKE_VALUE = 10;
+    const JOB_LOCATION = 'Mashhad';
     const RESUME_URL = 'http://www.ptc.co.ir/software-2/';
 
     /**
@@ -49,6 +50,10 @@ class PTCWebDepartmentEmployment
             if (!in_array($item, $person->skillSet)) {
                 throw new Exception('Minimum requirement does not match!', 410);
             }
+        }
+
+        if ($person->city == self::JOB_LOCATION) {
+            throw new Exception('Sorry! this job is only for ' . self::JOB_LOCATION . ' team.', 410);
         }
 
         $this->developer = $person;
