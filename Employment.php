@@ -41,9 +41,9 @@ class Employment {
         $this->developer = $person;
     }
 
-    public function likeMeter() {
+    public function howMuchWeLikeDeveloper() {
 
-        $point = 0;
+        $point = self::LIKE_VALUE;
         foreach ($this->companyInterestList as $like) {
 
             if(in_array($like, $this->developer->skillSet)) {
