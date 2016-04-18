@@ -2,7 +2,6 @@
 
 class Employment
 {
-
     const LIKE_VALUE = 10;
 
     private $developer = null;
@@ -34,7 +33,7 @@ class Employment
 
     function __construct($person)
     {
-
+        // determine if the person meets minimum required skill set
         foreach ($this->requirements as $item) {
 
             if (!in_array($item, $person->skillSet)) {
@@ -47,7 +46,7 @@ class Employment
 
     public function howMuchWeLikeDeveloper()
     {
-
+        // before starting to check, we still like developer, but we can like more!
         $point = self::LIKE_VALUE;
         foreach ($this->companyInterestList as $like) {
 
@@ -56,6 +55,7 @@ class Employment
             }
         }
 
+        // now we know for sure how much we like
         return $point;
     }
 }
