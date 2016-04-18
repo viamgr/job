@@ -1,6 +1,7 @@
 <?php
 
-class Employment {
+class Employment
+{
 
     const LIKE_VALUE = 10;
 
@@ -29,11 +30,12 @@ class Employment {
         'Restful Api experience (know the difference between post, put and patch!)',
     ];
 
-    function __construct($person) {
+    function __construct($person)
+    {
 
-        foreach($this->requirements as $item) {
+        foreach ($this->requirements as $item) {
 
-            if(!in_array($item, $person->skillSet)) {
+            if (!in_array($item, $person->skillSet)) {
                 throw new Exception('Minimum requirement does not match!', 410);
             }
         }
@@ -41,12 +43,13 @@ class Employment {
         $this->developer = $person;
     }
 
-    public function howMuchWeLikeDeveloper() {
+    public function howMuchWeLikeDeveloper()
+    {
 
         $point = self::LIKE_VALUE;
         foreach ($this->companyInterestList as $like) {
 
-            if(in_array($like, $this->developer->skillSet)) {
+            if (in_array($like, $this->developer->skillSet)) {
                 $point += self::LIKE_VALUE;
             }
         }
