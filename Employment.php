@@ -1,9 +1,14 @@
 <?php
 
-class Employment
+class PTCWebDepartmentEmployment
 {
     const LIKE_VALUE = 10;
+    const RESUME_URL = 'http://www.ptc.co.ir/software-2/';
 
+    /**
+     * this is an instance of WebGuyInterface
+     * @var WebGuyInterface|null
+     */
     private $developer = null;
 
     private $requirements = [
@@ -19,20 +24,25 @@ class Employment
      * @var array
      */
     private $companyInterestList = [
+        'Agile Software Development (scrum is preferred)',
         'Source Control (git is preferred)',
         'Full stack developer (js, html, css)',
+        'front-end js frameworks',
         'Yii Framework experience or any modern MVC frameworks',
         'Solid Principles',
         'Test Driven Development',
-        'Agile Software Development (scrum is preferred)',
         'NodeJs Experience (Hapi Framework is a plus)',
         'Restful Api experience (know the difference between post, put and patch!)',
-        'front-end js frameworks',
+        'UX/UI expert',
         'linux server administration skills',
     ];
 
     function __construct($person)
     {
+        if (!$person instanceof WebGuyInterface) {
+            throw new Exception('Sorry! this Job is for web developers or Linux server admins.', 410);
+        }
+
         // determine if the person meets minimum required skill set
         foreach ($this->requirements as $item) {
 
@@ -57,5 +67,11 @@ class Employment
 
         // now we know for sure how much we like
         return $point;
+    }
+
+    public function submitResume()
+    {
+        // WebGuyInterface has a method for submitting his/hers resume!
+        $this->developer->submitResume(self::RESUME_URL);
     }
 }
