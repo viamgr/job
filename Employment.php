@@ -28,6 +28,7 @@ class Employment
         'Agile Software Development (scrum is preferred)',
         'NodeJs Experience (Hapi Framework is a plus)',
         'Restful Api experience (know the difference between post, put and patch!)',
+        'front-end js frameworks',
     ];
 
     function __construct($person)
